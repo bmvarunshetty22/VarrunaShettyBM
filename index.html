@@ -89,11 +89,10 @@
    	</div> <!-- /intro-content --> 
 
    	<ul class="intro-social">        
-         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-         <li><a href="#"><i class="fa fa-behance"></i></a></li>
-         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-         <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+         <li><a href="https://www.facebook.com/varruna.settybm" target="_blank"><i class="fa fa-facebook"></i></a></li>
+         <li><a href="https://www.linkedin.com/in/varruna-setty-b-m-997096b8" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+         <li><a href="https://twitter.com/windo_seat_bidi?s=09" target="_blank"><i class="fa fa-twitter"></i></a></li>
+         <li><a href="https://www.instagram.com/window.seat.bidi/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
       </ul> <!-- /intro-social -->      	
 
    </section> <!-- /intro -->
@@ -433,7 +432,7 @@
    			<h5>Portfolio</h5>
    			<h1>Check Out Some of My Works.</h1>
 
-   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+   			<p class="lead">Responsible for Product Design & Development [Automotive plastic-Exterior Trims] including Engineering Change Instruction and approval of new product developed.</p>
 
    		</div>   		
    	</div> <!-- /section-intro--> 
@@ -953,23 +952,23 @@
    		<div class="col-twelve">
 
             <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="">
+            <form name="contactForm" id="contactForm" method="post"   action="https://formspree.io/f/mayaenoe">
       			<fieldset>
 
                   <div class="form-field">
  						   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
                   </div>
                   <div class="form-field">
-	      			   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
+	      			   <input name="_replyto" type="email" id="contactEmail" placeholder="Email" value="" required="">
 	               </div>
                   <div class="form-field">
 	     				   <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
 	               </div>                       
                   <div class="form-field">
-	                 	<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+	                 	<textarea name="message" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
 	               </div>                      
                  <div class="form-field">
-                     <button class="submitform">Submit</button>
+                     <button class="submitform" type="submit" id="my-form-button">Submit</button>
                      <div id="submit-loader">
                         <div class="text-loader">Sending...</div>                             
        				      <div class="s-loader">
@@ -979,12 +978,12 @@
 								</div>
 							</div>
                   </div>
-
+				  <p id="my-form-status"></p>
       			</fieldset>
       		</form> <!-- Form End -->
 
             <!-- contact-warning -->
-            <div id="message-warning">            	
+            <!-- <div id="message-warning">            	 -->
             </div>            
             <!-- contact-success -->
       		<div id="message-success">
@@ -1056,11 +1055,10 @@
      		<div class="col-six tab-full pull-right social">
 
      			<ul class="footer-social">        
-			      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-			      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-			      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-			      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			      <li><a href="https://www.facebook.com/varruna.settybm" target="_blank"><i class="fa fa-facebook"></i></a></li>
+			      <li><a href="https://www.linkedin.com/in/varruna-setty-b-m-997096b8" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+			      <li><a href="https://twitter.com/windo_seat_bidi?s=09" target="_blank"><i class="fa fa-twitter"></i></a></li>
+			      <li><a href="https://www.instagram.com/window.seat.bidi/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
 			   </ul> 
 	      		
 	      </div>
@@ -1088,7 +1086,28 @@
    <script src="js/jquery-2.1.3.min.js"></script>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
-
+   <script>
+    var form = document.getElementById("contactForm");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        status.innerHTML = "Thanks for your submission!";
+        form.reset()
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
 </body>
 
 </html>
